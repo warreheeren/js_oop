@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="scripts.js"></script>
+</body>
+<p>De default verzendkosten worden berekend voor een vezending binnen belgie. indien u buiten belgie woont, maar nog
+    altijd in europa dient u dit hieronder aan te geven. verzendingen buiten europa doen we niet.</p>
+<form>
+    <input type="checkbox" name="cbx" id="cbx">
+    <label for="cbx">Buiten Belgie, maar binnen europa</label><br><br>
+    <input type="button" value="bereken verzendkost" onclick="berekenVerzendKost()">
+</form>
+<p id="uitkomstTekst"></p>
+
+</html>
