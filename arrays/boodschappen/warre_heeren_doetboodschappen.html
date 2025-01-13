@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//  Maak een lege array aan: boodschappen.
+        let boodschappen  = [];
+// Voeg vervolgens via javascript volgende arrays toe in deze array, het wordt dus een tweedimensionale array:
+    boodschappen[0] = ["bruin boerenbrood", 2, "besteld"];
+    boodschappen[1] = ["bio halfvolle melk", 1, "besteld"];
+    boodschappen[2]= ["plat water", 6, "besteld"];
+    console.log(boodschappen);
+
+// Pas vervolgens via javascript "besteld" in elke array aan (je mag het dus niet gewoon intikken in bovenstaande definities):µ
+
+    boodschappen[0].splice(2,2,"geleverd");
+    boodschappen[1].splice(2,2,"nabesteld");
+    boodschappen[2].splice(2,2,"geleverd");
+// "geleverd"
+// "nabesteld"
+// "geleverd"
+
+// Maak een array met naam inhoud aan die volgende waardes bevat: "400g", "1l", "1,5l"
+    let inhoud = ["400g", "1l", "1,5l"];
+// Overloop de boodschappen met een forEach en voeg de overeenkomstige inhoudsbepaling toe aan een boodschap via splice.
+// Log ook het volgende in de console (de uitleg tekst staat dus niet in de array, maar is via de log toegevoegd):
+    boodschappen.forEach(function(boodschap, index){
+        boodschap.splice(2, 0, inhoud[index]);
+        console.log(`${boodschap[0]} - aantal: ${boodschap[1]} - inhoud: ${boodschap[2]} - status: ${boodschap[3]}`);
+    });
+// bruin boerenbrood - aantal: 2 - inhoud: 400g - status: geleverd
+// bio halfvolle melk - aantal: 1 - inhoud: 1l - status: nabesteld
+// plat water - aantal: 6 - inhoud: 1,5l - status: geleverd
+    </script>
+</body>
+</html>

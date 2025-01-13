@@ -43,10 +43,10 @@ alleVakken.shift();
 console.log(alleVakken);
 
 // Bereken het totaal aantal vakken in alleVakken via reduce().
-function tel(){
-    return alleVakken.length;
+function tel(vak){
+    return vak + 1;
 }
-let aantalVakken = alleVakken.reduce(tel);
+let aantalVakken = alleVakken.reduce(tel, 0);
 console.log(aantalVakken); 
 
 // Maak een array "punten" met inhoud: 87, 93, 75, 81, 74, 85, 92, 91, 67, 65
@@ -54,18 +54,9 @@ let punten = [87, 93, 75, 81, 74, 85, 92, 91, 67, 65];
 console.log(punten);
 // Maak dan een array vakkenEnPunten, waarin je via reduce() alleVakken en punten combineert. 
 //Resultaat is dus bv. HTML&CSS 87 - Photoshop 93 - Interface 75 - Drupal 81 - Workflows 74 - Javascript 85 - jQuery 92...
-
-const vakkenEnPunten = alleVakken.reduce((resultaat,vak,punt)=>{
+function getVakkenEnPunten(resultaat,vak,punt){
     resultaat.push(`${vak} - ${punten[punt]}`);
     return resultaat;
-}, []);
-
+}
+let vakkenEnPunten = alleVakken.reduce(getVakkenEnPunten, []);
 console.log(vakkenEnPunten);
-
-
-
-
-
-
-
-

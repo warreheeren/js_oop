@@ -35,6 +35,14 @@
         console.log(totaleJaar);
 
 
+        function korteMaanden(kort, lang) {
+            return kort.concat(lang.substring(0, 3))
+        }
+
+        let afgekorteMaanden = totaleJaar.reduce(korteMaanden, []);
+        console.log(afgekorteMaanden);
+
+
     </script>
 </body>
 
