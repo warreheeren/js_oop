@@ -20,14 +20,14 @@ console.log(puurProgrammeren);
 // Maak een array aan: afdelingVakken: deze bevat alleVakken, voor elk vak is de tekst "FeDev - " toegevoegd via map().
 // Resultaat: "FeDev - HTML&CSS", "FeDev - Photoshop", "FeDev - Interface", "FeDev -Drupal", "FeDev -Workflows", "FeDev -Javascript", "FeDev -jQuery", "FeDev -PHP"
 let afdelingVakken = alleVakken.map(
-    function(vak){
+    function (vak) {
         return "FeDev - " + vak;
     }
 )
 console.log(afdelingVakken);
 
 // Voeg achteraan bij in ontwikkelingVakken via splice(): "JS-OOP", "PHP-OOP"
-ontwikkelingVakken.splice(4,0,"JS-OOP", "PHP-OOP");
+ontwikkelingVakken.splice(4, 0, "JS-OOP", "PHP-OOP");
 console.log(ontwikkelingVakken);
 
 // Voeg bij in alleVakken via push(): "JS-OOP", "PHP-OOP"
@@ -43,20 +43,29 @@ alleVakken.shift();
 console.log(alleVakken);
 
 // Bereken het totaal aantal vakken in alleVakken via reduce().
-function tel(vak){
-    return vak + 1;
+function tel() {
+    return alleVakken.length;
 }
-let aantalVakken = alleVakken.reduce(tel, 0);
-console.log(aantalVakken); 
+let aantalVakken = alleVakken.reduce(tel);
+console.log(aantalVakken);
 
 // Maak een array "punten" met inhoud: 87, 93, 75, 81, 74, 85, 92, 91, 67, 65
 let punten = [87, 93, 75, 81, 74, 85, 92, 91, 67, 65];
 console.log(punten);
 // Maak dan een array vakkenEnPunten, waarin je via reduce() alleVakken en punten combineert. 
 //Resultaat is dus bv. HTML&CSS 87 - Photoshop 93 - Interface 75 - Drupal 81 - Workflows 74 - Javascript 85 - jQuery 92...
-function getVakkenEnPunten(resultaat,vak,punt){
+
+const vakkenEnPunten = alleVakken.reduce((resultaat, vak, punt) => {
     resultaat.push(`${vak} - ${punten[punt]}`);
     return resultaat;
-}
-let vakkenEnPunten = alleVakken.reduce(getVakkenEnPunten, []);
+}, []);
+
 console.log(vakkenEnPunten);
+
+
+
+
+
+
+
+
