@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="myForm">
+        R: <input type="text" id="kleurRIn" maxlength="3" size="3" />
+        G: <input type="text" id="kleurGIn" maxlength="3" size="3" />
+        B: <input type="text" id="kleurBIn" maxlength="3" size="3" />
+        <input type="button" id="bereken" value="Bereken de kleur" />
+        <input type="text" id="hexWaardeOut">
+    </form>
+    <script>
+        "use strict";
+        let rIn, gIn, bIn, hexOut, bgc;
+        window.addEventListener("DOMContentLoaded", function () {
+            rIn = document.getElementById("kleurRIn");
+            gIn = document.getElementById("kleurGIn");
+            bIn = document.getElementById("kleurBIn");
+            hexOut = document.getElementById("hexWaardeOut");
+            bgc = document.body;
+
+            document.getElementById("bereken").addEventListener("click", berekenKleur);
+        });
+
+        function KleurHex(r, g, b) {
+            this.Rwaarde = r;
+            this.Gwaarde = g;
+            this.Bwaarde = b;
+
+            this.hexString = () => {
+                return `#${controleerHex(this.Rwaarde)}${controleerHex(this.Gwaarde)}${controleerHex(this.Bwaarde)}`;
+            }
+        }
+
+        function controleerHex(value) {
+            let hex = value.toString(16).toUpperCase();
+            if (hex.length === 1) {
+                return "0" + hex;
+            }
+            return hex;
+        }
+
+        function berekenKleur() {
+            let rWaarde = parseInt(rIn.value);
+            let gWaarde = parseInt(gIn.value);
+            let bWaarde = parseInt(bIn.value);
+
+            let mijnKleurHex = new KleurHex(rWaarde, gWaarde, bWaarde);
+            let hex = mijnKleurHex.hexString();
+            hexOut.value = hex;
+            bgc.style.backgroundColor = hex;
+        }
+    </script>
+</body>
+
+</html>
