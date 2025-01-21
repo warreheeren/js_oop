@@ -59,4 +59,4 @@ function getVakkenEnPunten(resultaat,vak,punt){
     return resultaat;
 }
 let vakkenEnPunten = alleVakken.reduce(getVakkenEnPunten, []);
-console.log(vakkenEnPunten);
+console.log(vakkenEnPunten.join(" "));
