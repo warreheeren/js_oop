@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Resultaten</h1>
+    </div>
+    <script type="text/javascript">
+        "use strict";
+        let alleResultaten = [];
+
+        function Resultaat(golfbaan, datum,hole,par,strokes){
+            this.golfbaan = golfbaan;
+            this.datum = datum;
+            this.hole = hole;
+            this.par = par;
+            this.strokes = strokes;
+            this.setScore = function() {
+               if(this.strokes == 1){
+               return this.score = "Hole in one";
+               }
+               else if(this.strokes <= this.par - 2){
+                return this.score = "Eagle";
+               }
+               else if(this.strokes <= this.par -1){
+                return this.score = "Birdie";
+               }
+               else if(this.strokes == this.par){
+                return this.score = "Par";
+               }
+               else if(this.strokes == this.par + 1){
+                return this.score = "Bogey";
+               }
+               else if(this.strokes == this.par + 2){
+                return this.score = "Double Bogey";
+               }
+                else{
+                return this.score = "No Score!";
+               }
+            } 
+            this.save = function() {
+                alleResultaten.push(this);
+            }
+        }
+
+        let res1 = new Resultaat("Groene Weide", "01/01/2020", 1, 10, 13);
+        let res2 = new Resultaat("Groene Weide", "02/02/2020", 2, 12, 12);
+        let res3 = new Resultaat("Konings Hooi", "08/01/2020", 3, 10, 1);
+        res1.save();
+        res2.save();
+        res3.save();
+
+        function showResult(){
+            alleResultaten.forEach(res => {
+                document.write(`<p><b>Golfbaan: </b>${res.golfbaan}</p>`);
+                document.write(`<p><b>Datum: </b>${res.datum}</p>`);
+                document.write(`<p><b>Hole: </b>${res.hole}</p>`);
+                document.write(`<p><b>Par: </b>${res.par}</p>`);
+                document.write(`<p><b>Strokes: </b>${res.strokes}</p>`);
+                document.write(`<p><b>Score: </b>${res.setScore()}</p>`);
+                document.write("<hr>");
+            });
+        }
+        showResult();
+    </script>
+</body>
+</html>
