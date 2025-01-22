@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Image gallery</title>
+	<link rel="stylesheet" type="text/css" href="gallery.css">
+</head>
+
+<body>
+	<p><img id="largeImg" src="550x400/ipad.jpg" alt="Large image"></p>
+	<div id="thumbs">
+		<a href="550x400/ipad.jpg" title="ipad"><img src="200x150/ipad.jpg"></a>
+		<a href="550x400/dj.jpg" title="dj"><img src="200x150/dj.jpg"></a>
+		<a href="550x400/ubuntu.jpg" title="ubuntu"><img src="200x150/ubuntu.jpg"></a>
+	</div>
+	<script>
+		"use strict";
+		
+		document.addEventListener("DOMContentLoaded", function () {
+			let largeImg = document.getElementById("largeImg");
+			let thumbs = document.getElementById("thumbs");
+			let bestandsNamen = ["ipad.jpg", "dj.jpg", "ubuntu.jpg", "electronica.jpg"];
+		
+			let teller = 1;
+		
+			document.getElementById("volgende").addEventListener("click", function () {
+				let a = document.createElement("a");
+				a.href = "550x400/" + bestandsNamen[teller];
+				a.title = bestandsNamen[teller].slice(0, -4);
+				
+				let img = document.createElement("img");
+				img.src = "200x150/" + bestandsNamen[teller];
+				img.alt = bestandsNamen[teller].slice(0, -4);
+				
+				a.appendChild(img);
+				thumbs.appendChild(a);
+		
+				teller++;
+			});
+		});
+		
+		thumbs.addEventListener("click", function (event) {
+			if (event.target.nodeName === "IMG") {
+				let link = event.target.parentElement;
+				largeImg.src = link.href;
+			}
+			event.preventDefault();
+		});
+		</script>
+</body>
+
+</html>

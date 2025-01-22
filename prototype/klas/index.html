@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="isbn" name="">
+    <input type="text" id="titel" name="">
+    <input type="text" id="jaar" name="">
+    <input type="text" id="publisher" name="">
+    <input type="text" id="status" name="">
+    <button id="btnOntleend">ontleend</button>
+    <button id="btnTerugBinnen">aanwezig</button>
+
+    <script type="text/javascript">
+       function Boek(isbn,titel,jaartal,uitgever,status){
+        this.isbn = isbn;
+        this.titel = titel;
+        this.jaartal = jaartal;
+        this.uitgever = uitgever;
+        this.status = status;
+       }
+       Boek.prototype.setStatus = function(status){
+        this.status = status;
+       }
+
+       let mijnEersteJavaBoek = new Boek("01234567", "JavaScript, the right way",2012,"jstherightway.com","aanwezig");
+
+        document.getElementById('isbn').value = mijnEersteJavaBoek.isbn;
+        document.getElementById('titel').value = mijnEersteJavaBoek.titel;
+        document.getElementById('jaar').value = mijnEersteJavaBoek.jaartal;
+        document.getElementById('publisher').value = mijnEersteJavaBoek.uitgever;
+        document.getElementById('status').value = mijnEersteJavaBoek.status;
+
+       document.getElementById('btnTerugBinnen').addEventListener('click', function(){
+        mijnEersteJavaBoek.setStatus("aanwezig");
+        document.getElementById('status').value = mijnEersteJavaBoek.status;
+       })
+
+       document.getElementById('btnOntleend').addEventListener('click', function(){
+        mijnEersteJavaBoek.setStatus("ontleend");
+        document.getElementById('status').value = mijnEersteJavaBoek.status;
+       })
+    </script>
+
+</body>
+</html>

@@ -4,11 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            background-color: #F5F5F5;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        div{
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 30px;
+            background-color: white;
+            border-left: 5px solid #1591ea; 
+            color: #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        p{
+            margin-bottom: 1.2rem;
+        }
+    </style>
 </head>
 <body>
-    <div>
-        <h1>Resultaten</h1>
-    </div>
+    <h1>Resultaten</h1>
     <script type="text/javascript">
         "use strict";
         let alleResultaten = [];
@@ -56,13 +75,14 @@
 
         function showResult(){
             alleResultaten.forEach(res => {
+                document.write("<div>");
                 document.write(`<p><b>Golfbaan: </b>${res.golfbaan}</p>`);
                 document.write(`<p><b>Datum: </b>${res.datum}</p>`);
                 document.write(`<p><b>Hole: </b>${res.hole}</p>`);
                 document.write(`<p><b>Par: </b>${res.par}</p>`);
                 document.write(`<p><b>Strokes: </b>${res.strokes}</p>`);
                 document.write(`<p><b>Score: </b>${res.setScore()}</p>`);
-                document.write("<hr>");
+                document.write("</div>");
             });
         }
         showResult();
