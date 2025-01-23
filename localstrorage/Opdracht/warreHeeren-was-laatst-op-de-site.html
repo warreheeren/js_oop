@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="weergave"></div>
+    <button id="btnVerwijderMij">Verwijder mij</button>
+    <script>
+      "use strict";
+      let weergave;
+      window.addEventListener("DOMContentLoaded", function () {
+        weergave = document.getElementById("weergave");
+      
+      if (localStorage.LaatstOpDeSite) {
+        let laatsteDatum = new Date(localStorage.LaatstOpDeSite);
+        weergave.innerHTML = `Je was hier de laatste keer op: ${laatsteDatum}.`;
+        localStorage.LaatstOpDeSite = new Date();
+      } else {
+        weergave.innerHTML = "Dit is de eerste keer dat je op de site komt.";
+        let datum = new Date();
+        localStorage.LaatstOpDeSite = datum;
+      }
+
+      document.getElementById("btnVerwijderMij").addEventListener("click", () => {
+          localStorage.removeItem("LaatstOpDeSite");
+          location.reload();
+        });
+      });
+    </script>
+  </body>
+</html>
